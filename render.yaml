@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: nike-inventory-service
+    env: node
+    region: oregon
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: MONGO_URI
+        sync: false
+      - key: ADMIN_KEY
+        generateValue: true
